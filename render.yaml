@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: carbon-dash
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn final_carbon:app.server
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
