@@ -1,1 +1,1 @@
-web: gunicorn final_carbon:app.server
+web: gunicorn final_carbon:server

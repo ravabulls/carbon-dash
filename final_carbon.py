@@ -12,7 +12,7 @@ import json
 
 # Initialize the Dash app with Bootstrap for better styling
 app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
-
+server = app.server
 # Load and Prepare the Data
 df = pd.read_excel("carbontracedata31.xlsx")
 df = df[df["Year"] != 2025]  # Filter out the year 2025
