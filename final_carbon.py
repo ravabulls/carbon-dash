@@ -422,7 +422,7 @@ def update_dashboard(selected_countries, selected_years, selected_sectors, selec
 # 4) Line Chart
     if selected_countries and len(selected_countries) == 1:
         country_name = selected_countries[0]
-        trend_df = df[df["Country"] == country_name].groupby("Year")[["Emissions"]].sum().reset_index()
+        trend_df = dff[dff["Country"] == country_name].groupby("Year")[["Emissions"]].sum().reset_index()
         fig_line = px.line(
             trend_df,
             x="Year",
@@ -431,7 +431,7 @@ def update_dashboard(selected_countries, selected_years, selected_sectors, selec
             markers=True
         )
     elif selected_countries and len(selected_countries) > 1:
-        trend_df = df[df["Country"].isin(selected_countries)].groupby(["Year", "Country"])[["Emissions"]].sum().reset_index()
+        trend_df = dff[dff["Country"].isin(selected_countries)].groupby(["Year", "Country"])[["Emissions"]].sum().reset_index()
         fig_line = px.line(
             trend_df,
             x="Year",
@@ -441,7 +441,7 @@ def update_dashboard(selected_countries, selected_years, selected_sectors, selec
             markers=True
         )
     else:
-        trend_df = df.groupby("Year")[["Emissions"]].sum().reset_index()
+        trend_df = dff.groupby("Year")[["Emissions"]].sum().reset_index()
         fig_line = px.line(
             trend_df,
             x="Year",
