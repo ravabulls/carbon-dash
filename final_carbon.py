@@ -21,18 +21,14 @@ df = df[df["Year"] != 2025]  # Filter out the year 2025
 if 'Emissions' in df.columns and 'Emissions in billions' in df.columns:
     df.drop('Emissions', axis=1, inplace=True)
 
-# Clean and rename columns
-if 'sector' in df.columns:
-    df.drop(['sector', 'subsector'], axis=1, inplace=True)
-
+#Rename the "Emissions in billions" column to "Emissions"
 df.rename(columns={
-    "Sector (Capital)": "Sector",
-    "Subsector(Capital)": "Subsector",
     "Emissions in billions": "Emissions"
 }, inplace=True)
 
-if 'co2e_100yr_emissions_quantity' in df.columns:
-    df.drop('co2e_100yr_emissions_quantity', axis=1, inplace=True)
+# replace "Taiwan (Province of China)" with "Taiwan" in the "Country" column
+df['Country'].replace("Taiwan (Province of China)", "Taiwan", inplace=True)
+
 
 # Extract unique values for dropdown options
 countries = sorted(df["Country"].unique())
